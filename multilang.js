@@ -19,10 +19,10 @@ var MultiLang = function(url, lang, onload)
 
 		// NOTE: will load asynchronously!
 		req.open("GET", url, true);
-		//req.setRequestHeader("User-Agent",navigator.userAgent);
+		//req.setRequestHeader("User-Agent", navigator.userAgent);
 		req.onreadystatechange = function (evt) {
-			if (evt.target.readyState == 4 && evt.target.status == 200)
-			//if (evt.target.readyState == 4)// TESTING loading from local file (status == 0)
+			if (evt.target.readyState == 4 && evt.target.status == 200) // status == 200, do not allow "Cross origin requests"
+			//if (evt.target.readyState == 4)// TESTING allow "Cross origin requests" to load from local harddisk
 			{
 				// load translations
 				this.phrases = JSON.parse( evt.target.responseText );
@@ -37,6 +37,10 @@ var MultiLang = function(url, lang, onload)
 
 			};
 		}.bind(obj); // NOTE: bind onreadyfunction to MultiLang instead of XMLHttpRequest, so MultiLang.phrases will be set instead of added to XMLHttpRequest
+		req.addEventListener("error", function(e) {
+			console.log('MultiLang.js: Error reading json file.');
+		}, false);
+		
 		req.send(null);
 	};
 
@@ -62,7 +66,10 @@ var MultiLang = function(url, lang, onload)
 
 	this.get = function(key) {
 		// get key phrase
-		var str = this.phrases[this.selectedLanguage][key];
+		var str;
+
+		// check if any languages were loaded
+		if (this.phrases[this.selectedLanguage]) str = this.phrases[this.selectedLanguage][key];
 
 		// if key does not exist, return the literal key
 		str = (str || key);
