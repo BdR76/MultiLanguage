@@ -6,8 +6,9 @@ var MultiLang = function(url, lang, onload)
 	// variables
 	this.phrases = {};
 
-	// keep only first two chareacters, for example 'en-US', 'fr', 'nl-NL', 'it', 'zh' etc.
-	this.selectedLanguage = (lang || navigator.language || navigator.userLanguage).substring(0, 2);;
+	// language code from parameter or if null then default to browser language preference
+	// Keep only first two characters, for example 'en-US' -> 'en', or 'nl-NL' -> 'nl' etc.
+	this.selectedLanguage = (lang || navigator.language || navigator.userLanguage).substring(0, 2);
 	
 	// onLoad callback function, call after loading JSON
 	this.onLoad = onload;
@@ -46,15 +47,16 @@ var MultiLang = function(url, lang, onload)
 
 	this.setLanguage = function(langcode) {
 
-		// check if language code exists in translations
+		// check if language code <langcode> does not exist in available translations in json file
+		// For example, available translated texts in json are 'en' and 'fr', but client language is 'es'
 		if (!this.phrases.hasOwnProperty(langcode)) {
-			// if it doesn't exist; default to first language 
+			// doesn't exist so default to the first available language, i.e. the top-most language in json file
 			
 			// NOTE: the order of properties in a JSON object are not *guaranteed* to be the same as loading time,
 			// however in practice all browsers do return them in order
 			for (var key in this.phrases) {
 				if (this.phrases.hasOwnProperty(key)) {
-					langcode = key;
+					langcode = key; // take the first language code
 					break;
 				};
 			};
@@ -77,5 +79,3 @@ var MultiLang = function(url, lang, onload)
 		return str;
 	};
 }
-
-
