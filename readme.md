@@ -7,17 +7,27 @@ It contains a working example page and a JSON example file with multiple languag
 
 How to use
 ----------
-All translations are stored in a JSON file like this:
+Store two or more translations in a JSON file, for example `languages.json` like this:
 
 	{
-	   "en": {
-	      "Hello": "Hello World!",
-	      "Yes": "Yes"
-	   },
-	   "fr": {
-	      "Hello": "Bonjour à tous!",
-	      "Yes": "Oui"
-	   }
+	    "en": {
+	        "Hello": "Hello World!",
+	        "SaveChanges": "Do you want to save the changes?",
+	        "Yes": "Yes",
+	        "No": "No"
+	    },
+	    "fr": {
+	        "Hello": "Bonjour à tous!",
+	        "SaveChanges": "Voulez-vous sauvegarder les modifications?",
+	        "Yes": "Oui",
+	        "No": "Non"
+	    }
+	    "zh": {
+	        "Hello": "大家好",
+	        "SaveChanges": "是否要保存更改？",
+	        "Yes": "要",
+	        "No": "不要"
+	    }
 	}
 
 And then MultiLang.js can be used like this:
