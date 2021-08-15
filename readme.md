@@ -21,7 +21,7 @@ Store two or more translations in a JSON file, for example `languages.json` like
 	        "SaveChanges": "Voulez-vous sauvegarder les modifications?",
 	        "Yes": "Oui",
 	        "No": "Non"
-	    }
+	    },
 	    "zh": {
 	        "Hello": "大家好",
 	        "SaveChanges": "是否要保存更改？",
