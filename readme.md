@@ -38,7 +38,7 @@ And then MultiLang.js can be used like this:
 
 Manage translations
 -------------------
-Keeping track of all the translated strings can be a challenge, even for smaller projects. See this [Excel spreadsheet](https://github.com/BdR76/Manage-translations) to manage translations more easily. The translator(s) can fill the spreadsheet with translated texts and the JSON file can then be generated using a VBA macro. For more information [see here](http://stackoverflow.com/questions/20324967/localize-multi-plattform-projects-consolidate-string-files/20330497#20330497) and
+Keeping track of all the translated strings can be a challenge, even for smaller projects. See this [Excel spreadsheet](https://github.com/BdR76/Manage-translations) to manage translations more easily. The translator(s) can fill the spreadsheet with translated texts and the JSON file can then be generated using a Excel VBA or LibreOffice macro. For more information [see here](http://stackoverflow.com/questions/20324967/localize-multi-plattform-projects-consolidate-string-files/20330497#20330497).
 
 Also see the [Manage translations](https://github.com/BdR76/Manage-translations) github page
 
